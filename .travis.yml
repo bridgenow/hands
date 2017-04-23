@@ -12,6 +12,7 @@ install:
   - pip install -r ../template/requirements.txt
 script:
   - python scripts/build.py
+after_script:
   - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && python scripts/deploy.py || false'
 env:
   global:
