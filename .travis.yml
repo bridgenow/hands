@@ -11,9 +11,9 @@ install:
   - git clone git@github.com:bridgenow/template.git ../template
   - pip install -r ../template/requirements.txt
 script:
-  - python scripts/build.py
+  - python ../template/scripts/build.py
 after_script:
-  - python scripts/deploy.py
+  - python ../template/scripts/deploy.py
   # - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && python scripts/deploy.py || false'
 env:
   global:
