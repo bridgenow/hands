@@ -17,3 +17,4 @@ after_script:
 env:
   global:
   - COMMIT_AUTHOR_EMAIL: "mark.dessain@gmail.com"
+  - COMMIT_AUTHOR_NAME: "Travis Job"
