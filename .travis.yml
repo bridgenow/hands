@@ -8,7 +8,7 @@ before_install:
   - ssh-add github_deploy_key
 install:
   - git clone -b init git@github.com:bridgenow/bridgenow.github.io.git ../home
-  - git clone -b init https://github.com/bridgenow/template.git ../template
+  - git clone -b init git@github.com:bridgenow/template.git ../template
   - pip install -r ../template/requirements.txt
 script:
   - python build.py
