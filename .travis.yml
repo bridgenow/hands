@@ -12,9 +12,10 @@ install:
   - pip install -r ../template/requirements.txt
 script:
   - python ../template/scripts/build.py
-  - python ../template/scripts/deploy.py
+  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && python ../template/scripts/deploy.py || false'
+  # - python ../template/scripts/deploy.py
 # after_script:
-  # - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && python scripts/deploy.py || false'
+  # -
 env:
   global:
     - COMMIT_AUTHOR_EMAIL: "mark.dessain@gmail.com"
