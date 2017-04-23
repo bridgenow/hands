@@ -5,7 +5,9 @@ import shutil
 import logging
 import subprocess
 
+logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
+
 
 
 def validate(fullpath):
@@ -32,6 +34,16 @@ def validate(fullpath):
         raise AssertionError("%s: malformed YAML: %s" % (path, e))
 
 
+def list_files(startpath):
+    for root, dirs, files in os.walk(startpath):
+        level = root.replace(startpath, '').count(os.sep)
+        indent = ' ' * 4 * (level)
+        log.info('{}{}/'.format(indent, os.path.basename(root)))
+        subindent = ' ' * 4 * (level + 1)
+        for f in files:
+            log.info('{}{}'.format(subindent, f))
+
+
 def main():
     hand_source = './hands'
     hand_dest = '../template/content/hands'
@@ -50,6 +62,9 @@ def main():
 
     log.info('Building ...')
     subprocess.check_call(['hyde', '-x', '-s', '../template/', 'gen', '-r'])
+
+    log.info('Displaying Tree ...')
+    list_files('../template/deploy')
 
 
 if __name__ == "__main__":
