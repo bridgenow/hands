@@ -12,9 +12,8 @@ install:
   - pip install -r ../template/requirements.txt
 script:
   - python ../template/scripts/build.py
-  - echo $TRAVIS_PULL_REQUEST
-# after_script:
-#   - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && python ../template/scripts/deploy.py || false'
+  - echo $TRAVIS_BRANCH
+  - [ "${TRAVIS_BRANCH}" = "init" ] && python ../template/scripts/build.py || false
 env:
   global:
     - COMMIT_AUTHOR_EMAIL: "mark.dessain@gmail.com"
