@@ -12,7 +12,6 @@ install:
   - pip install -r ../template/requirements.txt
 script:
   - python build.py
-after_script:
   - python deploy.py
 env:
   global:
