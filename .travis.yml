@@ -13,7 +13,7 @@ install:
 script:
   - python build.py
 after_script:
-  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && ../template/deploy.py || false'
+  - '[ "${TRAVIS_PULL_REQUEST}" = "true" ] && python deploy.py || false'
 env:
   global:
   - COMMIT_AUTHOR_EMAIL: "mark.dessain@gmail.com"
