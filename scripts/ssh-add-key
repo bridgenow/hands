@@ -1,4 +1,4 @@
-openssl aes-256-cbc -K $encrypted_27c6f75aee4e_key -iv $encrypted_27c6f75aee4e_iv -in ../keys/github_deploy_key.enc -out ../keys/github_deploy_key -d
-chmod 600 ../keys/github_deploy_key
+openssl aes-256-cbc -K $encrypted_27c6f75aee4e_key -iv $encrypted_27c6f75aee4e_iv -in github_deploy_key.enc -out github_deploy_key -d
+chmod 600 github_deploy_key
 eval `ssh-agent -s`
-ssh-add ../keys/github_deploy_key
+ssh-add github_deploy_key
