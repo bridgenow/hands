@@ -7,14 +7,15 @@ before_install:
   - eval `ssh-agent -s`
   - ssh-add keys/github_deploy_key
 install:
-  - git clone -b init git@github.com:bridgenow/bridgenow.github.io.git ../home
-  - git clone -b init git@github.com:bridgenow/template.git ../template
+  - git clone git@github.com:bridgenow/bridgenow.github.io.git ../home
+  - git clone git@github.com:bridgenow/template.git ../template
   - pip install -r ../template/requirements.txt
 script:
   - python scripts/build.py
 after_script:
-  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && python scripts/deploy.py || false'
+  - python scripts/deploy.py
+  # - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && python scripts/deploy.py || false'
 env:
   global:
-  - COMMIT_AUTHOR_EMAIL: "mark.dessain@gmail.com"
-  - COMMIT_AUTHOR_NAME: "Travis Job"
+    - COMMIT_AUTHOR_EMAIL: "mark.dessain@gmail.com"
+    - COMMIT_AUTHOR_NAME: "Travis Job"
