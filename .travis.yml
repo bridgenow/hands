@@ -12,8 +12,8 @@ install:
   - pip install -r ../template/requirements.txt
 script:
   - python ../template/scripts/build.py
-  - echo $TRAVIS_BRANCH
-  - '[ "${TRAVIS_BRANCH}" = "master" ] && python ../template/scripts/deploy.py || true'
+  - echo $TRAVIS_BRANCH $TRAVIS_PULL_REQUEST
+  - '[ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ] && python ../template/scripts/deploy.py || true'
 env:
   global:
     - COMMIT_AUTHOR_EMAIL: "mark.dessain@gmail.com"
